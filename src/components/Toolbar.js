@@ -6,7 +6,7 @@ function Toolbar({ filters, selected, onSelectFilter }) {
         value={item} 
         onClick={onSelectFilter}
         selected={ item === selected ? true : false }
-        className={ item === selected ? "selected-btn" : "unselected-btn"}
+        className={ item === selected ? "selected-btn" : "unselected-btn" }
       >
         {item}
       </button>
