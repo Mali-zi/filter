@@ -76,22 +76,28 @@ function Portfolio() {
   ];
   const filters = ["All", "Websites", "Flayers", "Business Cards"];
   const [activeFilter, setActiveFilter] = useState("All");
-  const [projects, setProjects] = useState(data);
 
   function onSelectFilter(e) {
-
     setActiveFilter(e.target.value);
-    setProjects(data.filter(item => item.category === activeFilter));
+  };
+
+  let projects = data;
+  if (activeFilter !== "All") {
+    projects = data.filter(item => item.category === activeFilter);
   };
 
   return (
-    <div>
-      <Toolbar
-        filters={filters}
-        selected={activeFilter}
-        onSelectFilter={onSelectFilter}
-      />
-      <ProjectList projects={projects} />
+    <div className='container'>
+      <div className='toolbar'>
+        <Toolbar
+          filters={filters}
+          selected={activeFilter}
+          onSelectFilter={onSelectFilter}
+        />
+      </div>
+      <div>
+        <ProjectList projects={projects} />
+      </div>
     </div>
   )
 }
